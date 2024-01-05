@@ -8,6 +8,17 @@ function renderList(){
 }
 
 function markAsComplete(taskid){
+    const markTask = task.filter((task)=>{
+        return task.id == taskid
+    });
+    if(markTask.length > 0){
+        currentTask = markTask[0];
+        currentTask.done = !currentTask.done;
+        renderList();
+        showNotification("The task toggle successfully");
+        return
+    }
+    showNotification("The task toggle was not Done");
 
 }
 
@@ -21,10 +32,8 @@ function deleteTask(taskid){
 }
 
 function addTask(tasks){
-    console.log(tasks)
     if(tasks){
         task.push(tasks)
-        console.log(task)
         renderList()
         showNotification("Task add successfully")
     }
