@@ -3,7 +3,21 @@ const taskList = document.getElementById("list");
 const addTaskInput = document.getElementById("add");
 const taskCounter = document.getElementById("tasks-counter");
 
+function addToDom(tasks){
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <input type="checkbox" id="${tasks.id}" ${tasks.done ? 'checked':''}class="custom-checkbox">
+        <label for="${tasks.id}">${tasks.tasktext}</label>
+        <img src="bin.svg" class="delete" data-id="${tasks.id}" />
+    `;
+    taskList.append(li);
+}
 function renderList(){
+    taskList.innerHTML = '';
+    for(let i = 0; i <= task.length; i++){
+        addToDom(task[i]);
+    }
+    taskCounter.innerHTML = task.length;
 
 }
 
